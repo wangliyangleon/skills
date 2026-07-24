@@ -1,4 +1,4 @@
-# liyang-claude-skills
+# liyang-skills
 
 Personal Agent Skills library — usable across all projects (quant work, personal projects, games), and across any Agent-Skills-compatible tool, not just Claude Code.
 
@@ -44,13 +44,13 @@ npm login
 npm publish
 ```
 
-The package name `liyang-claude-skills` is currently free on the npm registry. After publishing, `npx liyang-skills` and `npx --package=github:wangliyangleon/skills liyang-skills` behave identically — the registry route is just shorter to type and doesn't require the repo to stay public.
+The package name `liyang-skills` is currently free on the npm registry. After publishing, `npx liyang-skills` and `npx --package=github:wangliyangleon/skills liyang-skills` behave identically — the registry route is just shorter to type and doesn't require the repo to stay public.
 
 ## Repo layout
 
 ```
 skills/
-  code-simplification-plan/
+  slim-plan/
     SKILL.md                             # the actual skill
 bin/install.js                           # cross-tool installer, zero dependencies
 package.json

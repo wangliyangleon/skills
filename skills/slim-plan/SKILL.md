@@ -1,5 +1,5 @@
 ---
-name: code-simplification-plan
+name: slim-plan
 description: Analyzes the codebase for redundant code, over-engineered abstractions, and poor-readability code, then produces a task-breakdown planning document under docs/. Use when asked to simplify, clean up, reduce complexity, or "slim down" the codebase. Does not modify any code.
 argument-hint: [target-directory (optional, defaults to whole repo)]
 disable-model-invocation: true
@@ -92,7 +92,7 @@ State explicitly in each task whether test files will need structural changes, a
 ## Output
 
 - If `docs/` does not exist at the project root, create it.
-- Write the document to `docs/code-simplification-plan.md`.
+- Write the document to `docs/slim-plan.md`.
 - Structure:
 
 ### 1. Overview

@@ -1,5 +1,5 @@
 {
-  "name": "liyang-claude-skills",
+  "name": "liyang-skills",
   "version": "1.0.0",
   "description": "Install Liyang's Agent Skills (SKILL.md) into Claude Code, Codex CLI, Antigravity CLI, and other Agent Skills-compatible tools.",
   "bin": {
