@@ -10,13 +10,11 @@
  * standard) -- only the destination directory differs.
  *
  * Verified against each tool's own docs at the time of writing:
- *   - Claude Code: ~/.claude/skills/<name>/        (code.claude.com/docs/en/skills)
- *   - Codex CLI:   ~/.codex/skills/<name>/          (developers.openai.com/codex/skills)
+ *   - Claude Code:      ~/.claude/skills/<name>/        (code.claude.com/docs/en/skills)
+ *   - Codex CLI:        ~/.codex/skills/<name>/          (developers.openai.com/codex/skills)
+ *   - Antigravity CLI:  ~/.gemini/config/skills/<name>/ (antigravity.google/docs/skills)
  *
  * NOT verified against first-party docs -- off by default, opt in with --agents:
- *   - Antigravity CLI: ~/.gemini/config/skills/<name>/ is the one global path recognized
- *     by all Antigravity flavors (AGY, AGY CLI, AGY IDE), per third-party investigation
- *     (atamel.dev/posts/2026/07-01_where_agy_agent_skills), not Google's own docs.
  *   - Cursor, Gemini CLI: paths vary by source and may be wrong or stale.
  *     Check that tool's own docs before relying on this.
  *
@@ -47,7 +45,7 @@ const AGENT_TARGETS = {
   antigravity: {
     label: 'Antigravity CLI',
     dir: () => path.join(os.homedir(), '.gemini', 'config', 'skills'),
-    confident: false,
+    confident: true,
   },
   cursor: {
     label: 'Cursor',

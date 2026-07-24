@@ -1,8 +1,8 @@
 # liyang-skills
 
-Personal Agent Skills library — usable across all projects (quant work, personal projects, games), and across any Agent-Skills-compatible tool, not just Claude Code.
+Personal Agent Skills library - usable across all projects (quant work, personal projects, games), and across any Agent-Skills-compatible tool, not just Claude Code.
 
-Each skill is a plain `SKILL.md` file following the open [Agent Skills standard](https://agentskills.io). The same file works unmodified in Claude Code, Codex CLI, Antigravity CLI, and other adopting tools — only the install *location* differs per tool, which is what the installer below handles.
+Each skill is a plain `SKILL.md` file following the open [Agent Skills standard](https://agentskills.io). The same file works unmodified in Claude Code, Codex CLI, Antigravity CLI, and other adopting tools - only the install *location* differs per tool, which is what the installer below handles.
 
 ## Install
 
@@ -13,8 +13,9 @@ npx --package=github:wangliyangleon/skills liyang-skills
 ```
 
 This installs every skill in this repo into:
-- `~/.claude/skills/` (Claude Code) — verified against Claude Code's own docs
-- `~/.codex/skills/` (Codex CLI) — verified against OpenAI's own docs
+- `~/.claude/skills/` (Claude Code) - verified against Claude Code's own docs
+- `~/.codex/skills/` (Codex CLI) - verified against OpenAI's own docs
+- `~/.gemini/config/skills/` (Antigravity CLI) - verified against Google's own docs
 
 Other flags:
 
@@ -22,12 +23,12 @@ Other flags:
 # see what's available without installing anything
 npx --package=github:wangliyangleon/skills liyang-skills --list
 
-# target specific tools; antigravity/cursor/gemini are unverified against first-party
+# target specific tools; cursor/gemini are unverified against first-party
 # docs, so they're opt-in only
-npx --package=github:wangliyangleon/skills liyang-skills --agents=claude,codex,antigravity
+npx --package=github:wangliyangleon/skills liyang-skills --agents=claude,codex,antigravity,cursor,gemini
 ```
 
-Share the exact same command with anyone — no npm account, no publishing, no GitHub auth needed since the repo is public.
+Share the exact same command with anyone - no npm account, no publishing, no GitHub auth needed since the repo is public.
 
 ### Option B: from the npm registry
 
@@ -44,7 +45,7 @@ npm login
 npm publish
 ```
 
-The package name `liyang-skills` is currently free on the npm registry. After publishing, `npx liyang-skills` and `npx --package=github:wangliyangleon/skills liyang-skills` behave identically — the registry route is just shorter to type and doesn't require the repo to stay public.
+The package name `liyang-skills` is currently free on the npm registry. After publishing, `npx liyang-skills` and `npx --package=github:wangliyangleon/skills liyang-skills` behave identically - the registry route is just shorter to type and doesn't require the repo to stay public.
 
 ## Repo layout
 
@@ -60,7 +61,7 @@ package.json
 
 1. `mkdir -p skills/<new-skill>`
 2. Add `skills/<new-skill>/SKILL.md`.
-3. Commit and push. `npx ... liyang-skills` picks it up automatically — no changes needed to `bin/install.js`.
+3. Commit and push. `npx ... liyang-skills` picks it up automatically - no changes needed to `bin/install.js`.
 
 ## Updating a skill
 
