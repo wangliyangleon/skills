@@ -1,0 +1,21 @@
+{
+  "name": "liyang-claude-skills",
+  "version": "1.0.0",
+  "description": "Install Liyang's Agent Skills (SKILL.md) into Claude Code, Codex CLI, Antigravity CLI, and other Agent Skills-compatible tools.",
+  "bin": {
+    "liyang-skills": "bin/install.js"
+  },
+  "files": [
+    "bin",
+    "skills"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangliyangleon/skills.git"
+  },
+  "homepage": "https://github.com/wangliyangleon/skills#readme",
+  "bugs": {
+    "url": "https://github.com/wangliyangleon/skills/issues"
+  },
+  "license": "MIT"
+}
