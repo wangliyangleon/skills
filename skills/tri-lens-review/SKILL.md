@@ -2,6 +2,7 @@
 name: tri-lens-review
 description: Reviews a product or codebase through three independent lenses - Product Manager, User, and Architect - then merges the findings into a single dated proposal document under docs/. Each item is tagged with lens, type, priority (P0-P3), complexity (XS-XL), scope, an AI-speed schedule estimate, and explicit inter-task dependencies. Use this whenever the user wants a product/codebase reviewed or critiqued from multiple angles, wants to find what to build next, wants a proposal / review doc generated, or says things like "审视一下这个产品/项目", "从产品经理/用户/架构师的角度看看", or "生成一个 proposal". Read-only: it never modifies product code.
 argument-hint: [focus / target description (optional, defaults to the whole current project)]
+disable-model-invocation: true
 ---
 
 # Tri-Lens Review
