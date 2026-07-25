@@ -92,7 +92,7 @@ State explicitly in each task whether test files will need structural changes, a
 ## Output
 
 - If `docs/` does not exist at the project root, create it.
-- Write the document to `docs/slim-plan.md`.
+- Write the document to `docs/slim-plan-<YYYY-MM-DD>.md`, using today's date. If a file of that name already exists, append `-2`, `-3`, etc. - never overwrite.
 - Structure:
 
 ### 1. Overview
