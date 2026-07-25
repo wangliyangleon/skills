@@ -1,6 +1,6 @@
 ---
 name: tri-lens-review
-description: Reviews a product or codebase through three independent lenses - Product Manager, User, and Architect - then merges the findings into a single dated proposal document under docs/. Each item is tagged with lens, type, priority (P0-P3), complexity (XS-XL), scope, an AI-speed schedule estimate, and explicit inter-task dependencies. Use this whenever the user wants a product/codebase reviewed or critiqued from multiple angles, wants to find what to build next, wants a proposal / review doc generated, or says things like "审视一下这个产品/项目", "从产品经理/用户/架构师的角度看看", or "生成一个 proposal". Read-only - it never modifies product code.
+description: Reviews a product or codebase through three independent lenses - Product Manager, User, and Architect - then merges the findings into a single dated proposal document under docs/. Each item is tagged with lens, type, priority (P0-P3), complexity (XS-XL), scope, an AI-speed schedule estimate, status, and explicit inter-task dependencies. Read-only - it never modifies product code.
 argument-hint: [focus / target description (optional, defaults to the whole current project)]
 disable-model-invocation: true
 ---
@@ -114,6 +114,15 @@ Estimate how long the item takes **at the pace of an AI agent designing and exec
 - A dependency means T-x cannot correctly start until the listed tasks are done (shared files, a prerequisite refactor, a decision that must land first). Keep the dependency graph a DAG - if you spot a cycle, that's itself a finding worth surfacing.
 - **Do not decide parallelization.** Independent tasks (no dependencies between them) are left for the user to schedule; the user decides at execution time whether to run them in parallel. Your job is only to make the dependency relationships unambiguous.
 
+### Status
+
+Every proposal item also gets a `Status` field, derived from its dependencies:
+
+- `Not Started` - default, for items whose `depends on` is `none` or lists only already-completed tasks.
+- `Blocked` - for items whose `depends on` list includes at least one task that is not yet done.
+
+Since every item in a freshly generated proposal is by definition not yet done, only these two statuses are assigned during generation. The document may be revisited and hand-updated later as tasks get executed elsewhere; the additional statuses `Expired`, `Abandoned`, and `Completed: <commit list>` (followed by the commit(s) that implemented it) are reserved for that later bookkeeping - do not assign them here.
+
 ## Output
 
 - Create `docs/` at the project root if it doesn't exist.
@@ -131,7 +140,7 @@ Three subsections (Product Manager / User / Architect). Under each, the narrativ
 ### 3. Proposal items
 A single table, one row per item, sorted by priority (P0 first) then complexity. Columns:
 
-| ID | Title | Lens(es) | Type | Priority | Complexity | Scope (files/areas) | AI schedule | Depends on |
+| ID | Title | Lens(es) | Type | Priority | Complexity | Scope (files/areas) | AI schedule | Depends on | Status |
 
 "Lens(es)" lists every originating lens - multi-lens convergence is a signal, so make it visible.
 

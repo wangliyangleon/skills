@@ -1,6 +1,6 @@
 ---
 name: slim-plan
-description: Analyzes the codebase for redundant code, over-engineered abstractions, and poor-readability code, then produces a task-breakdown planning document under docs/. Use when asked to simplify, clean up, reduce complexity, or "slim down" the codebase. Does not modify any code.
+description: Analyzes the codebase for redundant code, over-engineered abstractions, and poor-readability code, then produces a task-breakdown planning document under docs/. Does not modify any code.
 argument-hint: [target-directory (optional, defaults to whole repo)]
 disable-model-invocation: true
 ---
@@ -120,11 +120,15 @@ Each subtask entry:
 - Files involved (including test files needing structural changes)
 - Priority (redundant code first, then over-engineering, then readability; within a category, low-risk before high-risk)
 - Estimated risk
+- Depends on: other Task IDs this task cannot correctly start before, or `none` (mirrors section 4)
+- Status: `Not Started` by default; `Blocked` if any task listed in "Depends on" is not yet done. See "Status values" below.
 - Acceptance criteria (must include: no business-logic changes; test results match the recorded baseline; full build passes for compiled languages)
 - Execution instructions: the exact instruction to hand to the fresh Claude Code session that executes this task later, e.g. "Delete unused function X in file Y, run `<baseline test command>`, confirm results match baseline: N passed, M skipped."
 
+**Status values**: only `Not Started` and `Blocked` are assigned during this run, since every task in a freshly generated plan is by definition not yet done. The document may be revisited and hand-updated later as tasks are executed in separate sessions; the additional statuses `Expired`, `Abandoned`, and `Completed: <commit list>` (followed by the commit(s) that implemented it) are reserved for that later bookkeeping - do not assign them here.
+
 ### 4. Dependency notes
-If any subtasks have unavoidable overlap (e.g. share a file), call it out explicitly and suggest an execution order. Avoid this wherever possible.
+If any subtasks have unavoidable overlap (e.g. share a file), call it out explicitly - state which task depends on which (e.g. "T-3 depends on: T-1") and suggest an execution order. Every dependency named here must match the "Depends on" field on the dependent task in section 3. Avoid this wherever possible.
 
 ## Additional rules
 
