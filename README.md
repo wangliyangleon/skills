@@ -53,16 +53,21 @@ The package name `liyang-skills` is currently free on the npm registry. After pu
 skills/
   slim-plan/
     SKILL.md                             # the actual skill
+  curate-docs/
+    SKILL.md
+    MEMORY-SOURCES.md                    # reference file, installed alongside
 bin/install.js                           # cross-tool installer, zero dependencies
 package.json
 ```
 
+A skill directory is copied whole, so a `SKILL.md` that has grown too long can push reference material into a sibling file and point at it with a relative link. The sibling ships to every tool the skill does.
+
 ## Adding a new skill
 
 1. `mkdir -p skills/<new-skill>`
-2. Add `skills/<new-skill>/SKILL.md`.
+2. Add `skills/<new-skill>/SKILL.md`, plus any sibling files it points at.
 3. Commit and push. `npx ... liyang-skills` picks it up automatically - no changes needed to `bin/install.js`.
 
 ## Updating a skill
 
-Edit its `SKILL.md`, commit, push. npx users get the update next time they run the install command (it always re-copies the current version).
+Edit its `SKILL.md` or anything beside it, commit, push. npx users get the update next time they run the install command (it always re-copies the current version).
