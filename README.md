@@ -47,10 +47,30 @@ npm publish
 
 The package name `liyang-skills` is currently free on the npm registry. After publishing, `npx liyang-skills` and `npx --package=github:wangliyangleon/skills liyang-skills` behave identically - the registry route is just shorter to type and doesn't require the repo to stay public.
 
+## ul-mode
+
+[ul-mode](skills/ul-mode/SKILL.md) guides feature implementation, bug fixes, and refactoring with three stages: **First Make it Work**, **Then Make it Right**, and **Follow Practice**. Its instructions are written in Chinese.
+
+It favors direct code, current requirements, and extending existing business-contract tests. Temporary TDD cases are consolidated only after their regression protection is preserved. It keeps documentation and progress reports small, requires no companion quality tools, and leaves commits, pushes, and cleanup subject to task authorization.
+
+After installing with one of the commands above, invoke it with your task:
+
+```text
+# Codex
+$ul-mode Implement the file-import feature defined in the current MVP PRD.
+
+# Claude Code
+/ul-mode Implement the file-import feature defined in the current MVP PRD.
+```
+
+Adapted from the engineering principles and three-stage organization of [Uncle Bob's ub-mode](https://github.com/unclebob/ub-mode), with project-specific testing and delivery preferences. This is a customized skill, not a full translation of the original.
+
 ## Repo layout
 
 ```
 skills/
+  ul-mode/
+    SKILL.md                             # concise coding and testing principles
   slim-plan/
     SKILL.md                             # the actual skill
   curate-docs/
